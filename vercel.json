@@ -1,5 +1,7 @@
 {
   "version": 2,
+  "rootDirectory": "client",
+  "cleanUrls": true,
   "routes": [
     {
       "src": "/assets/(.*)",
