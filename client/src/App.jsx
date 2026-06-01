@@ -183,15 +183,15 @@ const [password, setPassword] = useState("");
              setUsername(e.target.value)
             }
            />
-           <input
-               type="password"
-               placeholder="Password"
-               style={inputStyle}
-               value={password}
-               onChange={(e) =>
-               setPassword(e.target.value)
-              }
-            />  
+          <input
+  type="text"
+  placeholder="Full Name"
+  style={inputStyle}
+  value={fullName}
+  onChange={(e) =>
+    setFullName(e.target.value)
+  }
+/>
 
           <button
   style={loginButton}
