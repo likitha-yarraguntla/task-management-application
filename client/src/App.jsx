@@ -3,10 +3,12 @@ import { useEffect, useMemo, useState } from "react";
 function App() {
   // AUTH
 const [loggedIn, setLoggedIn] = useState(false);
-const [showSignup, setShowSignup] = useState(false);
+const [showSignup, setShowSignup] = useState(false)
+;
 
 const [username, setUsername] = useState("");
 const [password, setPassword] = useState("");
+const [fullName, setFullName] = useState("");
 
 
   // TASK STATES
