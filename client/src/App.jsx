@@ -152,83 +152,7 @@ const [fullName, setFullName] = useState("")
           (completedCount / tasks.length) *
             100
         );
-
-        // LOGIN SCREEN
-  if (!loggedIn) {
-    return (
-      <div style={loginPage}>
-        <div style={loginCard}>
-          <h1 style={{ fontSize: "36px" }}>
-            {showSignup ? "📝 Sign Up" : "🔐 Login"}
-          </h1>
-
-          <p style={{ color: "#bbb" }}>Welcome to Task Manager</p>
-
-          {/* 1. Full Name (Only for Sign Up) */}
-          {showSignup && (
-            <input
-              type="text"
-              placeholder="Full Name"
-              style={inputStyle}
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-            />
-          )}
-
-          {/* 2. Username */}
-          <input
-            type="text"
-            placeholder="Username"
-            style={inputStyle}
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-
-          {/* 3. Password */}
-          <input
-            type="password"
-            placeholder="Password"
-            style={inputStyle}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          {/* Login/Signup Button */}
-          <button
-            style={loginButton}
-            onClick={() => {
-              if (showSignup) {
-                if (!username.trim() || !password.trim() || !fullName.trim()) {
-                  alert("Fill all fields");
-                  return;
-                }
-                localStorage.setItem("user", JSON.stringify({ fullName, username, password }));
-                alert("Account created! Now login");
-                setShowSignup(false);
-              } else {
-                const savedUser = JSON.parse(localStorage.getItem("user"));
-                if (savedUser && username === savedUser.username && password === savedUser.password) {
-                  setLoggedIn(true);
-                } else {
-                  alert("Invalid username or password");
-                }
-              }
-            }}
-          >
-            {showSignup ? "Create Account" : "Login"}
-          </button>
-
-          {/* Switch Button */}
-          <button
-            style={switchButton}
-            onClick={() => setShowSignup(!showSignup)}
-          >
-            {showSignup ? "Already have account?" : "Create new account"}
-          </button>
-        </div>
-      </div>
-    );
-  }
+      
 
   // MAIN UI
   return (
@@ -278,9 +202,7 @@ const [fullName, setFullName] = useState("")
     color: "#6366f1",
     fontWeight: "600",
   }}
-/>
-  Welcome Back 👋
-<h3 style={{ color: "#6366f1" }}>
+>
   Welcome Back 👋
 </h3>
 
