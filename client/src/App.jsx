@@ -144,117 +144,37 @@ const [fullName, setFullName] = useState("")
       
 
   // MAIN UI
-  return (
-    <div
-      style={{
-        minHeight: "100vh",
-        padding: "20px",
-        fontFamily: "Arial",
-        background: darkMode
-          ? "#0f172a"
-          : "linear-gradient(135deg,#dbeafe,#f5d0fe,#e0e7ff)",
-        color: darkMode
-          ? "white"
-          : "black",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "1100px",
-          margin: "auto",
-        }}
-      >
-        {/* HEADER */}
-        <div
-          style={{
-            textAlign: "center",
-            marginBottom: "25px",
-          }}
-        >
-          <h1
-            style={{
-              fontSize: "32px",
-              fontWeight: "bold",
-              background:
-                "linear-gradient(to right,#4f46e5,#ec4899)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor:
-                "transparent",
-              lineHeight: "1.5",
-            }}
-          >
-            Task Management Application
-          </h1>
-          <h3
-  style={{
-    marginTop: "10px",
-    color: "#6366f1",
-    fontWeight: "600",
-  }}
->
-  Welcome Back 👋
-</h3>
-
-<p style={{ color: "#888" }}>
-  Logged in as User
-</p>
-
-          <p>
-            Organize your tasks and boost
-            productivity 🚀
-          </p>
-        </div>
-
-        {/* TOP BUTTONS */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "15px",
-            flexWrap: "wrap",
-            marginBottom: "25px",
-          }}
-        >
-          <button
-            style={topButton}
-            onClick={() =>
-              setDarkMode(!darkMode)
-            }
-          >
-            {darkMode
-              ? "☀ Light Mode"
-              : "🌙 Dark Mode"}
+return (
+  <>
+    {loggedIn ? (
+      <div style={{ ... }}> 
+        {/* ... the rest of your app ... */}
+      </div>
+    ) : (
+      // --- LOGIN PAGE UI ---
+      <div style={loginPage}>
+        <div style={loginCard}>
+          <h2>{showSignup ? "Sign Up" : "Login"}</h2>
+          <input 
+            type="text" 
+            placeholder="Username" 
+            style={inputStyle} 
+            onChange={(e) => setUsername(e.target.value)} 
+          />
+          <input 
+            type="password" 
+            placeholder="Password" 
+            style={inputStyle} 
+            onChange={(e) => setPassword(e.target.value)} 
+          />
+          <button style={loginButton} onClick={() => setLoggedIn(true)}>
+            {showSignup ? "Sign Up" : "Login"}
           </button>
-
-          <button
-            style={{
-              ...topButton,
-              background: "#ef4444",
-            }}
-         
-onClick={() => {
-  localStorage.removeItem("currentUser"); // Logout chesinappudu user ni remove cheyyi
-  setLoggedIn(false);
-}}
-          >
-            Logout
-          </button>
-          <button
-  style={{
-    ...topButton,
-    background: "#f59e0b",
-  }}
-  onClick={() => {
-    if (window.confirm("Delete all tasks?")) {
-      const currentUser = localStorage.getItem("currentUser");
-      setTasks(tasks.filter(t => t.createdBy !== currentUser));
-      
-    }
-  }}
->
-  Clear All
-</button>
         </div>
+      </div>
+    )}
+  </>
+);
 
         {/* ADD TASK CARD */}
         <div style={card}>
