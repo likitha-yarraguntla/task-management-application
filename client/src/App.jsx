@@ -60,6 +60,7 @@ const [fullName, setFullName] = useState("")
       priority,
       due: dueDate,
       category,
+      createdBy: localStorage.getItem("currentUser") || "anonymous",
       createdAt:
         new Date().toLocaleDateString(),
     };
@@ -107,34 +108,22 @@ const [fullName, setFullName] = useState("")
 
   // FILTER + SEARCH
   const filteredTasks = useMemo(() => {
+    const currentUser = localStorage.getItem("currentUser");
     return tasks.filter((t) => {
+      const isMyTask = t.createdBy === currentUser;
       const matchesSearch =
         t.text
           .toLowerCase()
           .includes(search.toLowerCase());
 
-      if (filter === "Completed") {
-        return (
-          matchesSearch && t.completed
-        );
-      }
-
-      if (filter === "Pending") {
-        return (
-          matchesSearch && !t.completed
-        );
-      }
-
-      if (filter === "High") {
-        return (
-          matchesSearch &&
-          t.priority === "High"
-        );
-      }
-
-      return matchesSearch;
-    });
-  }, [tasks, search, filter]);
+      
+    if (filter === "Completed") return isMyTask && matchesSearch && t.completed;
+    if (filter === "Pending") return isMyTask && matchesSearch && !t.completed;
+    if (filter === "High") return isMyTask && matchesSearch && t.priority === "High";
+    
+    return isMyTask && matchesSearch; // Default ga anni returns
+  });
+}, [tasks, search, filter]);
 
   // STATS
   const completedCount = tasks.filter(
@@ -206,10 +195,6 @@ const [fullName, setFullName] = useState("")
   Welcome Back 👋
 </h3>
 
-<p style={{ color: "#666" }}>
-  Manage your daily tasks efficiently
-</p>
-
 <p style={{ color: "#888" }}>
   Logged in as User
 </p>
@@ -246,9 +231,11 @@ const [fullName, setFullName] = useState("")
               ...topButton,
               background: "#ef4444",
             }}
-            onClick={() =>
-              setLoggedIn(false)
-            }
+         
+onClick={() => {
+  localStorage.removeItem("currentUser"); // Logout chesinappudu user ni remove cheyyi
+  setLoggedIn(false);
+}}
           >
             Logout
           </button>
@@ -259,7 +246,9 @@ const [fullName, setFullName] = useState("")
   }}
   onClick={() => {
     if (window.confirm("Delete all tasks?")) {
-      setTasks([]);
+      const currentUser = localStorage.getItem("currentUser");
+      setTasks(tasks.filter(t => t.createdBy !== currentUser));
+      
     }
   }}
 >
