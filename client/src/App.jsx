@@ -8,7 +8,7 @@ const [showSignup, setShowSignup] = useState(false)
 
 const [username, setUsername] = useState("");
 const [password, setPassword] = useState("");
-const [fullName, setFullName] = useState("");
+const [fullName, setFullName] = useState("")
 
 
   // TASK STATES
@@ -153,97 +153,77 @@ const [fullName, setFullName] = useState("");
             100
         );
 
-  // LOGIN SCREEN
+        // LOGIN SCREEN
   if (!loggedIn) {
     return (
       <div style={loginPage}>
         <div style={loginCard}>
           <h1 style={{ fontSize: "36px" }}>
-            {showSignup
-              ? "📝 Sign Up"
-              : "🔐 Login"}
+            {showSignup ? "📝 Sign Up" : "🔐 Login"}
           </h1>
 
-          <p style={{ color: "#bbb" }}>
-            Welcome to Task Manager
-          </p>
+          <p style={{ color: "#bbb" }}>Welcome to Task Manager</p>
 
+          {/* 1. Full Name (Only for Sign Up) */}
           {showSignup && (
             <input
               type="text"
               placeholder="Full Name"
               style={inputStyle}
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
             />
           )}
 
+          {/* 2. Username */}
           <input
-             type="text"
-             placeholder="Username"
-             style={inputStyle}
-             value={username}
-             onChange={(e) =>
-             setUsername(e.target.value)
-            }
-           />
-          <input
-  type="text"
-  placeholder="Full Name"
-  style={inputStyle}
-  value={fullName}
-  onChange={(e) =>
-    setFullName(e.target.value)
-  }
-/>
+            type="text"
+            placeholder="Username"
+            style={inputStyle}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
 
+          {/* 3. Password */}
+          <input
+            type="password"
+            placeholder="Password"
+            style={inputStyle}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          {/* Login/Signup Button */}
           <button
-  style={loginButton}
-  onClick={() => {
-    if (showSignup) {
-      if (!username || !password || !fullName) {
-        alert("Fill all fields");
-        return;
-      }
+            style={loginButton}
+            onClick={() => {
+              if (showSignup) {
+                if (!username.trim() || !password.trim() || !fullName.trim()) {
+                  alert("Fill all fields");
+                  return;
+                }
+                localStorage.setItem("user", JSON.stringify({ fullName, username, password }));
+                alert("Account created! Now login");
+                setShowSignup(false);
+              } else {
+                const savedUser = JSON.parse(localStorage.getItem("user"));
+                if (savedUser && username === savedUser.username && password === savedUser.password) {
+                  setLoggedIn(true);
+                } else {
+                  alert("Invalid username or password");
+                }
+              }
+            }}
+          >
+            {showSignup ? "Create Account" : "Login"}
+          </button>
 
-      localStorage.setItem(
-        "user",
-        JSON.stringify({
-          fullName,
-          username,
-          password,
-        })
-      );
-
-      alert("Account created! Now login");
-      setShowSignup(false);
-    } else {
-      const savedUser = JSON.parse(
-        localStorage.getItem("user")
-      );
-
-      if (
-        savedUser &&
-        username === savedUser.username &&
-        password === savedUser.password
-      ) {
-        setLoggedIn(true);
-      } else {
-        alert("Invalid username or password");
-      }
-    }
-  }}
->
-  {showSignup ? "Create Account" : "Login"}
-</button>
-
+          {/* Switch Button */}
           <button
             style={switchButton}
-            onClick={() =>
-              setShowSignup(!showSignup)
-            }
+            onClick={() => setShowSignup(!showSignup)}
           >
-            {showSignup
-              ? "Already have account?"
-              : "Create new account"}
+            {showSignup ? "Already have account?" : "Create new account"}
           </button>
         </div>
       </div>
