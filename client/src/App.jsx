@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-function App() {}
+function App() {
   // AUTH
 const [loggedIn, setLoggedIn] = useState(false);
 const [showSignup, setShowSignup] = useState(false);
@@ -83,7 +83,7 @@ const [fullName, setFullName] = useState("")
   const completeTask = (index) => {
     const updated = [...tasks];
 
-    updated[index].completed =
+    updated[index].completed;
       !updated[index].completed;
 
     setTasks(updated);
@@ -143,8 +143,8 @@ const [fullName, setFullName] = useState("")
       
 
   // MAIN UI
-return (
-  <>
+  return (
+   <>
     {loggedIn ? (
       <div>
         {/* ... the rest of your app ... */}
@@ -172,8 +172,9 @@ return (
         </div>
       </div>
     )}
-  </>
-);
+    </>
+  );
+
 
         {/* ADD TASK CARD */}
         <div style={card}>
@@ -666,4 +667,6 @@ const statCard = (bg) => ({
   width: "220px",
   textAlign: "center",
 });
+}
+
 export default App;
