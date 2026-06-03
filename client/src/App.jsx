@@ -178,7 +178,7 @@ const [fullName, setFullName] = useState("")
 
         {/* ADD TASK CARD */}
         <div style={card}>
-          <h2>✨ Add New Task</h2>
+          <h2> Add New Task</h2>
 
           <div style={flexWrap}>
             <input
