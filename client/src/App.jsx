@@ -206,8 +206,6 @@ const [fullName, setFullName] = useState("")
   Welcome Back 👋
 </h3>
 
-
-
 <p style={{ color: "#888" }}>
   Logged in as User
 </p>
