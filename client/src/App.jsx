@@ -1,10 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 
-function App() {
+function App() {}
   // AUTH
 const [loggedIn, setLoggedIn] = useState(false);
-const [showSignup, setShowSignup] = useState(false)
-;
+const [showSignup, setShowSignup] = useState(false);
 
 const [username, setUsername] = useState("");
 const [password, setPassword] = useState("");
@@ -147,7 +146,7 @@ const [fullName, setFullName] = useState("")
 return (
   <>
     {loggedIn ? (
-      <div style={{ ... }}> 
+      <div>
         {/* ... the rest of your app ... */}
       </div>
     ) : (
@@ -518,26 +517,17 @@ return (
             )
           )}
         </div>
-
-        {/* FOOTER */}
+  {/* FOOTER */}
         <p
           style={{
             textAlign: "center",
             marginTop: "25px",
-            color: darkMode
-              ? "#ccc"
-              : "#555",
+            color: darkMode ? "#ccc" : "#555",
           }}
         >
-          © 2026 Task Management
-          Application | Built with React
-          🚀
+          © 2026 Task Management Application | Built with React 🚀
         </p>
-      </div>
-    </div>
-  );
-}
-
+        
 // STYLES
 
 const loginPage = {
@@ -676,5 +666,4 @@ const statCard = (bg) => ({
   width: "220px",
   textAlign: "center",
 });
-
 export default App;
