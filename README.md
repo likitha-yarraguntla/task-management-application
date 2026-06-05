@@ -191,6 +191,13 @@ This project demonstrates practical implementation of:
 
 ## 👨‍💻 Author
 
-Developed with React.js to improve productivity and task organization.
+**Likitha Yarraguntla**
+
+Frontend Developer | React.js Enthusiast | Lifelong Learner
+
+📌 GitHub: https://github.com/likitha-yarraguntla
+
+Dedicated to creating responsive, efficient, and user-friendly web applications.
+
 
 ⭐ If you like this project, consider giving it a star.
