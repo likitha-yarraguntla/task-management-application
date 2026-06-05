@@ -6,7 +6,6 @@ A modern and responsive Task Management Application built with React.js that hel
 Managing daily tasks can be challenging without proper organization. This application provides a simple yet powerful solution for creating, managing, and tracking tasks with features such as priority levels, categories, due dates, progress tracking, and user authentication.
 
 ## ✨ Key Features
-
 ### 🔐 Authentication System
 
 * User Registration (Sign Up)
