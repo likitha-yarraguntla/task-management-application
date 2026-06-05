@@ -4,6 +4,12 @@ function App() {
   // AUTH
   const [loggedIn, setLoggedIn] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [signupName, setSignupName] = useState("");
+  const [signupUser, setSignupUser] = useState("");
+  const [signupPass, setSignupPass] = useState("");
 
   // TASK STATES
   const [task, setTask] = useState("");
@@ -24,23 +30,23 @@ function App() {
   const [filter, setFilter] = useState("All");
 
   // LOAD TASKS
-  useEffect(() => {
-    const savedTasks =
-      localStorage.getItem("tasks");
+    // LOAD TASKS (ఇది మీ పాత useEffect ని రీప్లేస్ చేస్తుంది)
+    useEffect(() => {
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (currentUser) {
+    // ప్రతి యూజర్‌కి ఒక సెపరేట్ కీ ("tasks_username") క్రియేట్ అవుతుంది
+         const saved = localStorage.getItem(`tasks_${currentUser.username}`);
+         setTasks(saved ? JSON.parse(saved) : []);
+      }
+}, [loggedIn]);
 
-    if (savedTasks) {
-      setTasks(JSON.parse(savedTasks));
-    }
-  }, []);
-
-  // SAVE TASKS
-  useEffect(() => {
-    localStorage.setItem(
-      "tasks",
-      JSON.stringify(tasks)
-    );
-  }, [tasks]);
-
+   // SAVE TASKS (ఇది కూడా పాతదాన్ని రీప్లేస్ చేయాలి)
+useEffect(() => {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  if (currentUser) {
+    localStorage.setItem(`tasks_${currentUser.username}`, JSON.stringify(tasks));
+  }
+}, [tasks]);  
   // ADD TASK
   const addTask = () => {
     if (task.trim() === "") {
@@ -98,6 +104,60 @@ function App() {
       setTasks(updated);
     }
   };
+const handleSignup = () => {
+  if (!signupName || !signupUser || !signupPass) {
+    alert("Fill all fields");
+    return;
+  }
+  
+  // 1. ఉన్న యూజర్లను తెచ్చుకోండి (లేకపోతే ఖాళీ లిస్ట్)
+  const existingUsers = JSON.parse(localStorage.getItem("users") || "[]");
+  
+  // 2. కొత్త యూజర్‌ని క్రియేట్ చేయండి
+  const newUser = { name: signupName, username: signupUser, password: signupPass };
+  
+  // 3. లిస్టులో కొత్త యూజర్‌ని యాడ్ చేసి సేవ్ చేయండి
+  localStorage.setItem("users", JSON.stringify([...existingUsers, newUser]));
+  
+  alert("Account Created Successfully!");
+  setShowSignup(false);
+  setSignupName("");
+  setSignupUser("");
+  setSignupPass("");
+};  
+
+const handleLogin = () => {
+  // ఇక్కడ 'user' బదులు 'users' అనే Array ని వాడుతున్నాము
+const users = JSON.parse(localStorage.getItem("users") || "[]");
+const savedUser = users.find(u => u.username === username);
+
+
+  if (!savedUser) {
+    alert(
+      "No account found. Please sign up first."
+    );
+    return;
+  }
+
+  if (
+    username === savedUser.username &&
+    password === savedUser.password
+  ) {
+    setLoggedIn(true);
+    localStorage.setItem("currentUser", JSON.stringify(savedUser));
+  } else {
+    alert(
+      "Invalid username or password"
+    );
+  }
+};
+// LOGOUT FUNCTION
+const handleLogout = () => {
+  localStorage.removeItem("currentUser"); // యూజర్ వివరాలను క్లియర్ చేస్తుంది
+  setLoggedIn(false); // లాగిన్ స్టేట్ ని తీసేస్తుంది
+  setTasks([]); // అప్పటివరకు ఉన్న టాస్క్ లిస్ట్ ని ఖాళీ చేస్తుంది
+};
+     
 
   // FILTER + SEARCH
   const filteredTasks = useMemo(() => {
@@ -146,68 +206,69 @@ function App() {
           (completedCount / tasks.length) *
             100
         );
+       // LOGIN SCREEN
+   if (!loggedIn) {
+     return (
+    <div style={loginPage}>
+      <div style={loginCard}>
+        <h1 style={{ fontSize: "36px" }}>
+          {showSignup ? "📝 Sign Up" : "🔐 Login"}
+        </h1>
 
-  // LOGIN SCREEN
-  if (!loggedIn) {
-    return (
-      <div style={loginPage}>
-        <div style={loginCard}>
-          <h1 style={{ fontSize: "36px" }}>
-            {showSignup
-              ? "📝 Sign Up"
-              : "🔐 Login"}
-          </h1>
+        <p style={{ color: "#bbb" }}>Welcome to Task Manager</p>
 
-          <p style={{ color: "#bbb" }}>
-            Welcome to Task Manager
-          </p>
-
-          {showSignup && (
-            <input
-              type="text"
-              placeholder="Full Name"
-              style={inputStyle}
-            />
-          )}
-
+        {/* Signup Name Input */}
+        {showSignup && (
           <input
             type="text"
-            placeholder="Username"
+            placeholder="Full Name"
+            value={signupName}
+            onChange={(e) => setSignupName(e.target.value)}
             style={inputStyle}
           />
+        )}
 
-          <input
-            type="password"
-            placeholder="Password"
-            style={inputStyle}
-          />
+        {/* Username Input (Dynamic based on mode) */}
+        <input
+          type="text"
+          placeholder="Username"
+          value={showSignup ? signupUser : username}
+          onChange={(e) => 
+            showSignup ? setSignupUser(e.target.value) : setUsername(e.target.value)
+          }
+          style={inputStyle}
+        />
 
-          <button
-            style={loginButton}
-            onClick={() =>
-              setLoggedIn(true)
-            }
-          >
-            {showSignup
-              ? "Create Account"
-              : "Login"}
-          </button>
+        {/* Password Input (Dynamic based on mode) */}
+        <input
+          type="password"
+          placeholder="Password"
+          value={showSignup ? signupPass : password}
+          onChange={(e) => 
+            showSignup ? setSignupPass(e.target.value) : setPassword(e.target.value)
+          }
+          style={inputStyle}
+        />
 
-          <button
-            style={switchButton}
-            onClick={() =>
-              setShowSignup(!showSignup)
-            }
-          >
-            {showSignup
-              ? "Already have account?"
-              : "Create new account"}
-          </button>
-        </div>
+        {/* Unified Login/Signup Button */}
+        <button
+          style={loginButton}
+          onClick={showSignup ? handleSignup : handleLogin}
+        >
+          {showSignup ? "Create Account" : "Login"}
+        </button>
+
+        {/* Toggle between Login and Signup */}
+        <button
+          style={switchButton}
+          onClick={() => setShowSignup(!showSignup)}
+        >
+          {showSignup ? "Already have account? Login" : "Create new account"}
+        </button>
       </div>
-    );
-  }
-
+    </div>
+  );
+}
   // MAIN UI
   return (
     <div
