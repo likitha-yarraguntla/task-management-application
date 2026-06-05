@@ -1,5 +1,4 @@
 # 🚀 Task Management Application
-
 A modern and responsive Task Management Application built with React.js that helps users organize, prioritize, and track their daily activities efficiently.
 
 ## 🌟 Overview
