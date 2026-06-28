@@ -155,22 +155,22 @@ The application will run at:
 ```text
 http://localhost:5173
 ```
-## 📸 Screenshots
+## 📸 Project Screenshots
+
 ### 🔐 Login Page
-<img src="./screenshots/login.png" width="900">
+<img src="./screenshots/login.png" width="900"/>
 
 ### 📋 Dashboard
-<img src="./screenshots/dashboard.png" width="900">
+<img src="./screenshots/dashboard.png" width="900"/>
+
 ### ➕ Add Task
-<img src="./screenshots/addtask.png" width="900">
+<img src="./screenshots/addtask.png" width="900"/>
 
 ### ✅ Completed Tasks
-<img src="./screenshots/completed.png" width="900">
+<img src="./screenshots/completed.png" width="900"/>
 
 ### 🌙 Dark Mode
-<img src="./screenshots/darkmode.png" width="900">
----
-
+<img src="./screenshots/darkmode.png" width="900"/>
 ## 🚀 Learning Outcomes
 
 Through this project, I gained practical experience in:
