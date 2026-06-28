@@ -1,11 +1,23 @@
-# 🚀 Task Management Application
-A modern and responsive Task Management Application built with React.js that helps users organize, prioritize, and track their daily activities efficiently.
+# 📋 Task Management Application
 
-## 🌟 Overview
+A modern and responsive **Task Management Application** built with **React.js** that helps users organize, prioritize, and track their daily activities efficiently.
 
-Managing daily tasks can be challenging without proper organization. This application provides a simple yet powerful solution for creating, managing, and tracking tasks with features such as priority levels, categories, due dates, progress tracking, and user authentication.
+The application provides an intuitive interface for managing tasks with features such as authentication, priority management, progress tracking, search and filtering, and productivity analytics.
+
+---
+
+## 🌐 Live Demo
+
+**🔗 Live Website:** https://task-manager-app-plb6.vercel.app/
+
+## 📂 GitHub Repository
+
+**🔗 Repository:** https://github.com/likitha-yarraguntla/task-management-application
+
+---
 
 ## ✨ Key Features
+
 ### 🔐 Authentication System
 
 * User Registration (Sign Up)
@@ -15,7 +27,7 @@ Managing daily tasks can be challenging without proper organization. This applic
 
 ### 📋 Task Management
 
-* Add New Tasks
+* Create New Tasks
 * Edit Existing Tasks
 * Delete Tasks
 * Mark Tasks as Completed
@@ -23,29 +35,30 @@ Managing daily tasks can be challenging without proper organization. This applic
 
 ### 🎯 Task Organization
 
-* Priority Levels
+#### Priority Levels
 
-  * High 🔴
-  * Medium 🟠
-  * Low 🟢
-* Categories
+* High 🔴
+* Medium 🟠
+* Low 🟢
 
-  * Study 📚
-  * Work 💼
-  * Health 🏃
-  * Personal 👤
+#### Categories
+
+* Study 📚
+* Work 💼
+* Health 🏃
+* Personal 👤
 
 ### 🔍 Smart Features
 
-* Search Tasks Instantly
-* Filter Tasks
+* Instant Task Search
+* Advanced Filtering
 
   * All Tasks
   * Completed Tasks
   * Pending Tasks
   * High Priority Tasks
 * Due Date Management
-* Overdue Task Detection ⚠️
+* Overdue Task Detection
 
 ### 📊 Productivity Dashboard
 
@@ -58,45 +71,55 @@ Managing daily tasks can be challenging without proper organization. This applic
 ### 🎨 User Experience
 
 * Responsive Design
-* Modern UI
+* Modern User Interface
 * Dark Mode 🌙
 * Light Mode ☀️
 * Interactive Controls
-* Attractive Color Themes
+* Mobile-Friendly Layout
 
 ### 💾 Data Persistence
 
 * Local Storage Integration
 * Automatic Task Saving
-* Persistent Login Data
+* Persistent Login Sessions
 
 ---
 
-## 🛠️ Technologies Used
+## 🛠️ Tech Stack
 
-| Technology        | Purpose              |
-| ----------------- | -------------------- |
-| React.js          | Frontend Development |
-| JavaScript (ES6+) | Application Logic    |
-| HTML5             | Structure            |
-| CSS3              | Styling              |
-| Local Storage API | Data Persistence     |
+### Frontend
+
+* React.js
+* JavaScript (ES6+)
+* HTML5
+* CSS3
+
+### State Management
+
+* React Hooks (useState, useEffect, useMemo)
+
+### Storage
+
+* Local Storage API
+
+### Deployment
+
+* Vercel
 
 ---
 
 ## 📂 Project Structure
 
 ```text
-Task-Management-App/
-│
+task-management-application/
 ├── public/
-│
 ├── src/
+│   ├── components/
+│   ├── pages/
 │   ├── App.js
-│   ├── index.js
-│
+│   └── main.jsx
 ├── package.json
-├── README.md
+└── README.md
 ```
 
 ---
@@ -106,13 +129,13 @@ Task-Management-App/
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/task-management-app.git
+git clone https://github.com/likitha-yarraguntla/task-management-application.git
 ```
 
-### Navigate to Project Folder
+### Navigate to Project Directory
 
 ```bash
-cd task-management-app
+cd task-management-application
 ```
 
 ### Install Dependencies
@@ -121,81 +144,74 @@ cd task-management-app
 npm install
 ```
 
-### Run the Application
+### Start Development Server
 
 ```bash
-npm start
+npm run dev
 ```
 
-The application will run on:
+The application will run at:
 
 ```text
-http://localhost:3000
+http://localhost:5173
 ```
 
 ---
+## 📸 Screenshots
 
-## 📸 Core Functionalities
+### 🔐 Login Page
+![Login Page](./screenshots/login.png)
 
-✅ User Authentication
+### 📋 Dashboard
+![Dashboard](./screenshots/dashboard.png)
 
-✅ Task Creation
+### ➕ Add Task
+![Add Task](./screenshots/addtask.png)
 
-✅ Task Editing
+### ✅ Completed Tasks
+![Completed Tasks](./screenshots/completed.png)
 
-✅ Task Deletion
-
-✅ Task Completion Tracking
-
-✅ Search & Filtering
-
-✅ Priority Management
-
-✅ Progress Analytics
-
-✅ Dark Mode Support
-
-✅ Local Storage Integration
+### 🌙 Dark Mode
+![Dark Mode](./screenshots/darkmode.png)
 
 ---
 
-## 🚀 Future Enhancements
+## 🚀 Learning Outcomes
+
+Through this project, I gained practical experience in:
+
+* React Hooks and State Management
+* CRUD Operations
+* Conditional Rendering
+* Event Handling
+* Local Storage Integration
+* Responsive Web Design
+* Component-Based Architecture
+* Building Productivity Applications
+
+---
+
+## 🔮 Future Enhancements
 
 * Multiple User Support
 * Firebase Authentication
 * Cloud Database Integration
 * Email Notifications
 * Task Reminders
-* Profile Management
-* Drag & Drop Tasks
+* Drag-and-Drop Task Management
+* User Profile Management
 * Mobile Application Version
 
 ---
 
-## 🎯 Learning Outcomes
-
-This project demonstrates practical implementation of:
-
-* React Hooks (useState, useEffect, useMemo)
-* State Management
-* Conditional Rendering
-* Event Handling
-* Local Storage Usage
-* Responsive UI Design
-* CRUD Operations
-* Component-Based Architecture
-
----
-
-## 👨‍💻 Author
+## 👩‍💻 Developer
 
 **Likitha Yarraguntla**
 
-Frontend Developer | React.js Enthusiast | Lifelong Learner
+Aspiring Full Stack Developer passionate about building responsive and user-friendly web applications using modern technologies.
 
-📌 GitHub: https://github.com/likitha-yarraguntla
+* GitHub: https://github.com/likitha-yarraguntla
+* LinkedIn: https://www.linkedin.com/in/likitha-yarraguntla-11a496395/
+* LeetCode: https://leetcode.com/u/8309663069/
 
-Dedicated to creating responsive, efficient, and user-friendly web applications.
-
-
-⭐ If you like this project, consider giving it a star.
+⭐ If you found this project useful, consider giving it a star on GitHub.
