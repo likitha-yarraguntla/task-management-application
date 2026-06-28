@@ -163,7 +163,7 @@ http://localhost:5173
 ### 📋 Dashboard
 <img src="./screenshots/dashboard.png" width="900"/>
 
-### ➕ Add Task
+### ➕ Add New Task
 <img src="./screenshots/addtask.png" width="900"/>
 
 ### ✅ Completed Tasks
