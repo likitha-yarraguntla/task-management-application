@@ -155,25 +155,20 @@ The application will run at:
 ```text
 http://localhost:5173
 ```
-
----
 ## 📸 Screenshots
-
 ### 🔐 Login Page
-![Login Page](./screenshots/login.png)
+<img src="./screenshots/login.png" width="900">
 
 ### 📋 Dashboard
-![Dashboard](./screenshots/dashboard.png)
-
+<img src="./screenshots/dashboard.png" width="900">
 ### ➕ Add Task
-![Add Task](./screenshots/addtask.png)
+<img src="./screenshots/addtask.png" width="900">
 
 ### ✅ Completed Tasks
-![Completed Tasks](./screenshots/completed.png)
+<img src="./screenshots/completed.png" width="900">
 
 ### 🌙 Dark Mode
-![Dark Mode](./screenshots/darkmode.png)
-
+<img src="./screenshots/darkmode.png" width="900">
 ---
 
 ## 🚀 Learning Outcomes
